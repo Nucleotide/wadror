@@ -37,7 +37,7 @@
       <file leaf-file-name="index.html.erb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/breweries/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="53" selection-start="81" selection-end="81" vertical-scroll-proportion="0.041208792" vertical-offset="0" max-vertical-offset="728">
+            <state line="19" column="36" selection-start="370" selection-end="370" vertical-scroll-proportion="0.39148352" vertical-offset="0" max-vertical-offset="728">
               <folding />
             </state>
           </provider>
@@ -351,7 +351,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/breweries/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="53" selection-start="81" selection-end="81" vertical-scroll-proportion="0.041208792" vertical-offset="0" max-vertical-offset="728">
+        <state line="19" column="36" selection-start="370" selection-end="370" vertical-scroll-proportion="0.39148352" vertical-offset="0" max-vertical-offset="728">
           <folding />
         </state>
       </provider>
