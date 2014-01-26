@@ -2,11 +2,13 @@
 
 <p> Number of ratings: <%= @ratings.count %> </p>
 
-<ul>
+<table>
   <% @ratings.each do |rating| %>
-      <li> <%= rating %> <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %> </li>
+      <tr>
+      <td> <%= rating %></li></td><td> <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %> </td>
+      </tr>
   <% end %>
-</ul>
+</table>
 
 <p>
 <%= link_to 'New rating', new_rating_path %>

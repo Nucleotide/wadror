@@ -22,5 +22,8 @@
     Has <%=pluralize(@beer.ratings.count, 'rating')%>, average  <%= @beer.average_rating %>
 <% end %>
 </p>
+<p>
+  <%= link_to 'Rate this beer', new_rating_path %>
+</p>
 
 <%= link_to 'Edit', edit_beer_path(@beer) %>
