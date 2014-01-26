@@ -1,0 +1,18 @@
+irb(main):013:0> Brewery.create name:"BrewDog", year:2007
+=> #<Brewery id: 5, name: "BrewDog", year: 2007, created_at: "2014-01-26 10:04:00", updated_at: "2014-01-26 10:04:00">
+irb(main):015:0> Beer.create name:"Punk IPA", style:"IPA", brewery_id:5
+=> #<Beer id: 14, name: "Punk IPA", style: "IPA", brewery_id: 5, created_at: "2014-01-26 10:06:55", updated_at: "2014-01-26 10:06:55">
+irb(main):016:0> Beer.create name:"Nanny State", style:"lowalcohol", brewery_id:5
+=> #<Beer id: 15, name: "Nanny State", style: "lowalcohol", brewery_id: 5, created_at: "2014-01-26 10:08:25", updated_at: "2014-01-26 10:08:25">
+irb(main):023:0> Rating.create score:22, beer_id:14
+=> #<Rating id: 4, score: 22, beer_id: 14, created_at: "2014-01-26 10:11:51", updated_at: "2014-01-26 10:11:51">
+irb(main):024:0> Rating.create score:13, beer_id:14
+=> #<Rating id: 5, score: 13, beer_id: 14, created_at: "2014-01-26 10:12:53", updated_at: "2014-01-26 10:12:53">
+irb(main):025:0> Rating.create score:31, beer_id:14
+=> #<Rating id: 6, score: 31, beer_id: 14, created_at: "2014-01-26 10:12:58", updated_at: "2014-01-26 10:12:58">
+irb(main):026:0> Rating.create score:29, beer_id:15
+=> #<Rating id: 7, score: 29, beer_id: 15, created_at: "2014-01-26 10:14:05", updated_at: "2014-01-26 10:14:05">
+irb(main):027:0> Rating.create score:35, beer_id:15
+=> #<Rating id: 8, score: 35, beer_id: 15, created_at: "2014-01-26 10:14:10", updated_at: "2014-01-26 10:14:10">
+irb(main):028:0> Rating.create score:14, beer_id:15
+=> #<Rating id: 9, score: 14, beer_id: 15, created_at: "2014-01-26 10:14:15", updated_at: "2014-01-26 10:14:15">
