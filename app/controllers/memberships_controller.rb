@@ -38,6 +38,7 @@ class MembershipsController < ApplicationController
         end
       end
   end
+  
 
   # PATCH/PUT /memberships/1
   # PATCH/PUT /memberships/1.json

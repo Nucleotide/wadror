@@ -33,7 +33,6 @@
 <table>
   <% @user.memberships.each do |membership| %>
       <tr>
-        <td> <%= membership.beer_club.name %></li></td>
         <td> <%= link_to membership.beer_club.name, beer_club_path %></td>
       </tr>
   <% end %>

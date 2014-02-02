@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.select :beer_club_id, options_from_collection_for_select(@clubs, :beer_club_id, :name) %>
+    <%= f.select :beer_club_id, options_from_collection_for_select(@clubs, :id, :name) %>
   </div>
   <div class="actions">
     <%= f.submit "Join" %>
