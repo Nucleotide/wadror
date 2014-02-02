@@ -22,6 +22,23 @@
   <% end %>
 </table>
 
+<p>
+  <% if @user.memberships.empty? %>
+      This user is not a member of any beer club!
+  <% else %>
+      Member of <%=pluralize(@user.memberships.count, 'beer club')%>
+  <% end %>
+</p>
+
+<table>
+  <% @user.memberships.each do |membership| %>
+      <tr>
+        <td> <%= membership.beer_club.name %></li></td>
+        <td> <%= link_to membership.beer_club.name, beer_club_path %></td>
+      </tr>
+  <% end %>
+</table>
+
 <%= link_to 'Back', users_path %>
 <% if current_user == @user %> |
     <%= link_to 'Edit', edit_user_path(@user) %> |
