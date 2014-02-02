@@ -1,13 +1,21 @@
 Ratebeer::Application.routes.draw do
+  resources :users
+
   resources :beers
 
   resources :breweries
 
   resources :ratings, only: [:index, :new, :create, :destroy]
 
-  root 'breweries#index'
+  resources :sessions, only: [:new, :create]
 
-  get 'kaikki_bisset', to: 'beers#index'
+  get 'signin', to: 'sessions#new'
+
+  delete 'signout', to: 'sessions#destroy'
+
+  get 'signup', to: 'users#new'
+
+  root 'breweries#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
