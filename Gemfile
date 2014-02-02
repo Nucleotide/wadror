@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'bcrypt-ruby', '~> 3.1.2'
+
 gem 'byebug', group: [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

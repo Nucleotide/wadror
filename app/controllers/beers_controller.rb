@@ -6,11 +6,13 @@ class BeersController < ApplicationController
   def index
     @beers = Beer.all
     @breweries = Brewery.all
+    @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
   end
 
   # GET /beers/1
   # GET /beers/1.json
   def show
+    @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
   end
 
   # GET /beers/new
@@ -22,14 +24,16 @@ class BeersController < ApplicationController
 
   # GET /beers/1/edit
   def edit
-    @breweries = Brewery.all
     @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
+    @breweries = Brewery.all
   end
 
   # POST /beers
   # POST /beers.json
   def create
     @beer = Beer.new(beer_params)
+    @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
+    @breweries = Brewery.all
 
     respond_to do |format|
       if @beer.save

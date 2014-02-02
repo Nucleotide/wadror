@@ -21,9 +21,6 @@
     <%= link_to 'signout', signout_path, method: :delete %>
   <% end %>
 </div>
-<% unless current_user.nil? %>
-    <p><%= current_user.username %> signed in</p>
-<% end %>
 
 <%= yield %>
 

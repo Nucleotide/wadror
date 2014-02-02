@@ -4,6 +4,26 @@
   <strong>Username:</strong>
   <%= @user.username %>
 </p>
+<p>
+  <% if @user.ratings.empty? %>
+      This user has made no ratings!
+  <% else %>
+      Has <%=pluralize(@user.ratings.count, 'rating')%>, average  <%= @user.average_rating %>
+  <% end %>
+</p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<table>
+  <% @user.ratings.each do |rating| %>
+      <tr>
+        <td> <%= rating %></li></td>
+        <td> <% if @user == current_user %>
+          <%= link_to 'delete', rating, method: :delete, data: { confirm: 'Are you sure?' } %><% end %></td>
+      </tr>
+  <% end %>
+</table>
+
 <%= link_to 'Back', users_path %>
+<% if current_user == @user %> |
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Destroy', user_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
