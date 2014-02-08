@@ -16,9 +16,9 @@
 </p>
 
 <table>
-  <% @beer_club.memberships.each do |membership| %>
+  <% @beer_club.members.each do |member| %>
       <tr>
-        <td> <%= membership.user.username %></td>
+        <td> <%= member.username %></td>
         <td>
       </tr>
   <% end %>
