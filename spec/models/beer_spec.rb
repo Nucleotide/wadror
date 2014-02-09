@@ -23,3 +23,8 @@ describe Beer do
     expect(Beer.count).to eq(0)
   end
 end
+
+BeerClub
+BeerClubsController
+Membership
+MembershipsController
