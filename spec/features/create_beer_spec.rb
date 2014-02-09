@@ -3,6 +3,8 @@ require 'spec_helper'
 describe "New beer page" do
   it "beer should be created with a proper name" do
     FactoryGirl.create(:brewery, name: "Koff", year: 1897)
+    FactoryGirl.create(:user, username: "Pekka", password: "Foobar1", password_confirmation: "Foobar1")
+    sign_in(username:"Pekka", password:"Foobar1")
     visit new_beer_path
     select('Weizen', from:'beer[style]')
     select('Koff', from:'beer[brewery_id]')
@@ -18,6 +20,8 @@ describe "New beer page" do
 
   it "user should see new beer page if name for beer is not filled" do
     FactoryGirl.create(:brewery, name: "Koff", year: 1897)
+    FactoryGirl.create(:user, username: "Pekka", password: "Foobar1", password_confirmation: "Foobar1")
+    sign_in(username:"Pekka", password:"Foobar1")
     visit new_beer_path
     select('Weizen', from:'beer[style]')
     select('Koff', from:'beer[brewery_id]')
