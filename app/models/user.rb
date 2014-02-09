@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
   validates :username, uniqueness: true, length: { minimum: 3, maximum: 15 }
   validates :password, length: { minimum: 4 }, format: { with: %r{(?=.*[A-Z])(?=.*[0-9])}, message: 'password must contain a number and a capital letter' }
 
+  def favorite_beer
+    return nil if ratings.empty?
+    ratings.order(score: :desc).limit(1).first.beer
+  end
 end
