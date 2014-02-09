@@ -11,6 +11,6 @@ deploy:
   api_key:
     secure: Joj9fdH4tvHR+rO3M3BPp2orOGjOkcyUOlkXBk4l7DdLhm24zIMwA6rh4Oz1ph+skzl4TQh+PDfqDIlKud+k2+AD5VKEKkbR2UTHkmmmeWo2vQdMX41Wgaj1ylhAACjGUmRPkt3gxfXW87vqUv+CGCgRdFFrZ2SIp+3YerBfAaQ=
   app: safe-beach-9068
-  run: "rake db:migrate"
   on:
     repo: Nucleotide/wadror
+  run: "rake db:migrate"
