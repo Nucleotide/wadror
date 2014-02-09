@@ -64,10 +64,13 @@ class BeersController < ApplicationController
   # DELETE /beers/1
   # DELETE /beers/1.json
   def destroy
-    @beer.destroy
-    respond_to do |format|
-      format.html { redirect_to beers_url }
-      format.json { head :no_content }
+    if (current_user.admin?)
+      @beer.destroy
+    else
+      respond_to do |format|
+        format.html { redirect_to beers_url }
+        format.json { head :no_content }
+      end
     end
   end
 
