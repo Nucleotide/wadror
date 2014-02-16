@@ -15,7 +15,7 @@
       <% @places.each do |place| %>
           <tr>
             <% Place.rendered_fields.each do |f| %>
-                <td><%= place.send(f) %></td>
+                <td><%=place.send(f)%></td>
             <% end %>
           </tr>
       <% end %>

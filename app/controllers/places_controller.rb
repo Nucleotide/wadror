@@ -1,4 +1,5 @@
 class PlacesController < ApplicationController
+
   def index
   end
 
@@ -9,5 +10,8 @@ class PlacesController < ApplicationController
     else
       render :index
     end
+  end
+
+  def show
   end
 end

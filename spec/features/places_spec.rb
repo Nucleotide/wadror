@@ -13,7 +13,6 @@ describe "Places" do
 
     expect(page).to have_content "No locations in kumpula"
 
-    save_and_open_page
   end
 
   it "if one is returned by the API, it is shown at the page" do

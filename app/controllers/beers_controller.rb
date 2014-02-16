@@ -14,6 +14,8 @@ class BeersController < ApplicationController
   # GET /beers/1.json
   def show
     @styles = ["Weizen", "Lager", "Pale ale", "IPA", "Porter"]
+    @rating = Rating.new
+    @rating.beer = @beer
   end
 
   # GET /beers/new

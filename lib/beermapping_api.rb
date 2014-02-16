@@ -4,8 +4,11 @@ class BeermappingApi
     Rails.cache.fetch(city, :expires_in => 600) { fetch_places_in(city) }
   end
 
-
   private
+
+  def self.key
+    Settings.beermapping_apikey
+  end
 
   def self.fetch_places_in(city)
     url = 'http://stark-oasis-9187.herokuapp.com/api/'
