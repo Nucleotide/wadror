@@ -44,7 +44,5 @@ describe "User" do
     expect(page).to have_content 'Favorite beer: iso 3'
     expect(page).to have_content 'Favorite brewery: Koff'
     expect(page).to have_content 'Preferred style: Lager'
-
-    save_and_open_page
   end
 end
