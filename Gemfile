@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'httparty'
+
 gem 'simplecov', require: false
 
 gem 'rspec-rails', '~> 2.14.1'
