@@ -1,5 +1,4 @@
 class RatingsController < ApplicationController
-  before_action :ensure_that_signed_in, except: [:index, :show]
   def index
     @ratings = Rating.all
   end
@@ -22,7 +21,7 @@ class RatingsController < ApplicationController
   end
 
   def destroy
-    rating = Rating.find params[:id]
+    rating = Rating.find(params[:id])
     rating.delete if current_user == rating.user
     redirect_to :back
   end

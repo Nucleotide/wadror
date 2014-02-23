@@ -1,23 +1,22 @@
 require 'spec_helper'
 
 describe "Places" do
-
-  it "if no matches are returned by the API, it is informed at the page" do
+  it "if one is returned by the API, it is shown at the page" do
     BeermappingApi.stub(:places_in).with("kumpula").and_return(
-        []
+        [ Place.new(name:"Oljenkorsi", id:1) ]
     )
 
     visit places_path
+
     fill_in('city', with: 'kumpula')
     click_button "Search"
 
-    expect(page).to have_content "No locations in kumpula"
-
+    expect(page).to have_content "Oljenkorsi"
   end
 
-  it "if one is returned by the API, it is shown at the page" do
+  it "if multiple is returned by the API, all are shown at the page" do
     BeermappingApi.stub(:places_in).with("kumpula").and_return(
-        [ Place.new(:name => "Oljenkorsi") ]
+        [ Place.new(name:"Oljenkorsi", id:1), Place.new(name:"Unicafe", id:2) ]
     )
 
     visit places_path
@@ -25,17 +24,16 @@ describe "Places" do
     click_button "Search"
 
     expect(page).to have_content "Oljenkorsi"
+    expect(page).to have_content "Unicafe"
   end
 
-  it "if many matches are returned by the API, show all at the page" do
-    BeermappingApi.stub(:places_in).with("kumpula").and_return(
-        [ Place.new(:name => "Oljenkorsi"), Place.new(:name => "Kuppila") ]
-    )
+  it "if none is returned by the API, it is reported to used" do
+    BeermappingApi.stub(:places_in).with("kumpula").and_return([])
 
     visit places_path
     fill_in('city', with: 'kumpula')
     click_button "Search"
 
-    expect(page).to have_content "Oljenkorsi" and "Kuppila"
+    expect(page).to have_content "No locations in kumpula"
   end
 end

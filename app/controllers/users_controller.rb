@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @memberships = Membership.all
   end
 
   # GET /users/new
@@ -21,7 +20,6 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
   end
-
 
   # POST /users
   # POST /users.json
@@ -56,15 +54,14 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    if current_user == @user
+    if @user == current_user
       @user.destroy
       session[:user_id] = nil
-      respond_to do |format|
-        format.html { redirect_to users_url }
-        format.json { head :no_content }
-      end
     end
-
+    respond_to do |format|
+      format.html { redirect_to :root }
+      format.json { head :no_content }
+    end
   end
 
   private
@@ -74,9 +71,7 @@ class UsersController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-
     def user_params
       params.require(:user).permit(:username, :password, :password_confirmation)
     end
-
 end

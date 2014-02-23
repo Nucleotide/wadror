@@ -5,6 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by username: params[:username]
+
     if user.nil? or not user.authenticate params[:password]
       redirect_to :back, notice: "username and password do not match"
     else
@@ -14,9 +15,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    # nollataan sessio
     session[:user_id] = nil
-    # uudelleenohjataan sovellus pääsivulle
     redirect_to :root
   end
 end

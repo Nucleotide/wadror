@@ -3,40 +3,27 @@
 <h2><%= @beer_club.name %> <%= @beer_club.city %></h2>
 
 <p>
-  <strong>Founded:</strong>
-  <%= @beer_club.founded %>
+  Founded <%= @beer_club.founded %>
 </p>
 
-<p>
-  <% if @beer_club.memberships.empty? %>
-      This club has no members yet!
-  <% else %>
-      <h3>Members</h3>
-  <% end %>
-</p>
+<h3>Members</h3>
 
-<table>
+<ul>
   <% @beer_club.members.each do |member| %>
-      <tr>
-        <td> <%= member.username %></td>
-        <td>
-      </tr>
+    <li><%= link_to member.username, member %></li>
   <% end %>
-</table>
-<br/>
+</ul>
 
-<% if current_user.nil? %>
-    <%= link_to 'Edit', edit_beer_club_path(@beer_club) %>
-<% else %>
+<% if current_user %>
+  <% unless @beer_club.member? current_user %>
     <%= form_for(@membership) do |f| %>
-        <%= f.hidden_field :beer_club_id %>
-        <%= f.submit value:"join the club" %>
+       <%= f.hidden_field :beer_club_id %>
+       <%= f.submit value:"join the club" %>
     <% end %>
-    <br/>
-    <%= link_to 'Edit', edit_beer_club_path(@beer_club) %>
+  <% end %>
+
+  <br>
+  <%= link_to 'Edit', edit_beer_club_path(@beer_club) %>
+  <br>
+  <%= link_to 'Destroy the club', @beer_club, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
-
-
-
-
-

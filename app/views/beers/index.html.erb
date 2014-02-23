@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <h1>Listing beers</h1>
 
 <table>
@@ -8,7 +10,6 @@
       <th>Brewery</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -16,7 +17,7 @@
     <% @beers.each do |beer| %>
       <tr>
         <td><%= link_to beer.name, beer %></td>
-        <td><%= beer.style %></td>
+        <td><%= link_to beer.style, beer.style %></td>
         <td><%= link_to beer.brewery.name, beer.brewery %></td>
         <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
         <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -27,5 +28,5 @@
 
 <br>
 
-<%= link_to 'New Beer', new_beer_path %></br>
-<%= link_to 'List of breweries', breweries_path %>
+<%= link_to 'New Beer', new_beer_path if current_user %>
+

@@ -17,6 +17,7 @@ class MembershipsController < ApplicationController
     @membership = Membership.new
     @clubs = BeerClub.all.reject{ |b| b.members.include? current_user }
   end
+
   # GET /memberships/1/edit
   def edit
   end
@@ -29,7 +30,7 @@ class MembershipsController < ApplicationController
 
     respond_to do |format|
       if @membership.save
-        format.html { redirect_to @membership, notice: 'Membership was successfully created.' }
+        format.html { redirect_to :back, notice: "#{current_user.username}, welcome to the club!" }
         format.json { render action: 'show', status: :created, location: @membership }
       else
         @clubs = BeerClub.all.reject{ |b| b.members.include? current_user }
@@ -38,7 +39,6 @@ class MembershipsController < ApplicationController
       end
     end
   end
-
 
   # PATCH/PUT /memberships/1
   # PATCH/PUT /memberships/1.json
@@ -57,13 +57,10 @@ class MembershipsController < ApplicationController
   # DELETE /memberships/1
   # DELETE /memberships/1.json
   def destroy
-    if (current_user.admin?)
-      @membership.destroy
-    else
-      respond_to do |format|
-        format.html { redirect_to memberships_url }
-        format.json { head :no_content }
-      end
+    @membership.destroy
+    respond_to do |format|
+      format.html { redirect_to memberships_url }
+      format.json { head :no_content }
     end
   end
 

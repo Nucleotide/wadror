@@ -1,6 +1,7 @@
 class BreweriesController < ApplicationController
   before_action :set_brewery, only: [:show, :edit, :update, :destroy]
   before_action :ensure_that_signed_in, except: [:index, :show]
+  before_action :ensure_that_signed_in_as_admin, only: [:destroy]
 
   # GET /breweries
   # GET /breweries.json
@@ -21,7 +22,6 @@ class BreweriesController < ApplicationController
   # GET /breweries/1/edit
   def edit
   end
-
 
   # POST /breweries
   # POST /breweries.json
@@ -56,13 +56,10 @@ class BreweriesController < ApplicationController
   # DELETE /breweries/1
   # DELETE /breweries/1.json
   def destroy
-    if (current_user.admin?)
-      @brewery.destroy
-    else
-      respond_to do |format|
-          format.html { redirect_to breweries_url }
-          format.json { head :no_content }
-      end
+    @brewery.destroy
+    respond_to do |format|
+      format.html { redirect_to breweries_url }
+      format.json { head :no_content }
     end
   end
 
